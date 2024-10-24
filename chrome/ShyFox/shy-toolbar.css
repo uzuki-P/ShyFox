@@ -290,6 +290,7 @@ Tab bar has been transformed into vertical toolbar on the right side of the wind
         var(--shy-color) 0 var(--shy-download-pcent),
         var(--bt-col) var(--shy-download-pcent) 100%
       ) !important;
+      opacity: .5;
     }
   }
 }

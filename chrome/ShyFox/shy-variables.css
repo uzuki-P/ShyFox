@@ -11,7 +11,8 @@ Values of these variables can be changed safely and most likely nothing will bre
 
 :root, #screenshots-component *{
   /* accent color */
-  --shy-accent-color: #3584E4;
+  /* --shy-accent-color: #3584E4; */
+  --shy-accent-color: #E91E63;
   
   /* window border thickness and size of many margins */
   --margin: 0.8rem;

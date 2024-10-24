@@ -12,7 +12,7 @@ findbar{
   position: fixed !important;
   z-index: 5 !important;
   
-  bottom: calc(var(--bottom-margin) + var(--margin));
+  top: calc(var(--bottom-margin) + var(--margin));
   left: calc(
     (
       100vw

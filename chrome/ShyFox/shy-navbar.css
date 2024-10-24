@@ -67,7 +67,7 @@ Navigation bar on top of the window
 #main-window:not([customizing]):not([titlepreface*="‌"]):has(.tabbrowser-tab[selected][busy]) #urlbar:not([breakout-extend]) #urlbar-background{
   background: linear-gradient(
     to right,
-    color-mix(in srgb, var(--shy-color) 10%, transparent) 0 var(--shy-tab-load-pcent),
+    color-mix(in srgb, var(--shy-color) 30%, transparent) 0 var(--shy-tab-load-pcent),
     color-mix(in srgb, var(--bt-col) 10%, transparent) var(--shy-tab-load-pcent) 100%
   ) !important;
 }
@@ -215,6 +215,7 @@ Navigation bar on top of the window
       var(--shy-color) 0 var(--shy-tab-load-pcent),
       var(--bt-col) var(--shy-tab-load-pcent) 100%
     ) !important;
+    opacity: .5;
   }
   
   /* tab loading progress on whole panel */
@@ -308,4 +309,9 @@ Navigation bar on top of the window
   }
   
   #urlbar-background, #searchbar {background-color: var(--tb-col) !important;}
+}
+
+/* remove rounded url input */
+#urlbar-input{
+  border-radius: 0 !important;
 }

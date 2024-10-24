@@ -5,6 +5,28 @@ Cool floating search panel
 
 */
 
+
+/* show bg even on non floating navbar address */
+@media (-moz-bool-pref: "shyfox.disable.floating.search") { 
+  #urlbar[breakout-extend]{
+    /* cool translucent background */
+    &:before{
+      content: "";
+      position: fixed;
+      pointer-events: none;
+      border-radius: var(--rounding);
+
+      width: 100vw;
+      height: 100vh;
+
+      top: 0px;
+      left: 0px;
+
+      background-color: color-mix(in srgb, black 40%, transparent);
+    }
+  }
+}
+
 /* about:config setting */
 @media not (-moz-bool-pref: "shyfox.disable.floating.search") { 
   
@@ -45,7 +67,7 @@ Cool floating search panel
       top: 0px;
       left: 0px;
 
-      background-color: color-mix(in srgb, var(--bg-col) 80%, transparent);
+      background-color: color-mix(in srgb, black 80%, transparent);
     }
   } 
 }
