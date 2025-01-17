@@ -15,17 +15,22 @@
 #sidebar-main {
   visibility: collapse;
 }
+#sidebar-box {
+  padding: 0 !important;
+}
 
 /* centered navbar text */
 #urlbar:not(:is(
   [breakout][breakout-extend],
-  :focus-within
+:focus-within
 ) ) {
-  #urlbar-input {text-align: center !important}
+  #urlbar-input {
+    text-align: center !important;
+  }
 }
 
 /* tab loading progress in urlbar background */
-#main-window:not([customizing]):not([titlepreface*="‌"]):has(.tabbrowser-tab[selected][busy]) #urlbar:not([breakout-extend]) #urlbar-background{
+#main-window:not([customizing]):not([titlepreface*="‌"]):has(.tabbrowser-tab[selected][busy]) #urlbar:not([breakout-extend]) #urlbar-background {
   background: linear-gradient(
     to right,
     color-mix(in srgb, var(--shy-color) 30%, transparent) 0 var(--shy-tab-load-pcent),
@@ -33,23 +38,137 @@
   ) !important;
 }
 
-#main-window[customizing]{
-  #nav-bar{
-    left: 140px !important;
-    right: 140px !important;
-    
-    width: calc(100vw - 280px) !important;
-    
-    top: var(--margin) !important;
+/* Rounded navbar */
+#main-window[customizing] {
+  #nav-bar {
     border-radius: var(--big-rounding) !important;
-    
     background-color: var(--bg-col) !important;
   }
-  
-  #urlbar-background, #searchbar {background-color: var(--tb-col) !important;}
+  #urlbar-background,
+  #searchbar {
+    background-color: var(--tb-col) !important;
+  }
 }
 
 /* remove rounded url input */
-#urlbar-input{
+#urlbar-input {
   border-radius: 0 !important;
 }
+
+/* show bg even on non floating navbar address */
+#urlbar[breakout-extend] {
+    /* cool translucent background */
+  &:before {
+    content: "";
+    position: fixed;
+    pointer-events: none;
+    border-radius: var(--rounding);
+    width: 100vw;
+    height: 100vh;
+    top: 0px;
+    left: 0px;
+    background-color: color-mix(in srgb, black 40%, transparent);
+  }
+}
+
+/* ---------- ctrl + f ---------- */
+findbar {
+  --findbar-pad: 8px;
+  --fndbr-btn-wdt: 30px;
+  position: fixed !important;
+  z-index: 5 !important;
+  top: calc(var(--bottom-margin) + var(--margin));
+  left: calc(
+    (
+      100vw
+      - var(--findbar-wdt)
+      + var(--left-margin)
+      - var(--right-margin)
+    ) / 2
+  );
+  height: calc(var(--toolbar-item-hgt) * 2);
+  padding-top: var(--toolbar-item-hgt) !important;
+  width: var(--findbar-wdt);
+  
+  /* styles for input textbox */
+  .findbar-textbox {
+    position: absolute;
+    top: var(--findbar-pad);
+    left: var(--findbar-pad);
+    width: calc(
+      var(--findbar-wdt) 
+      - var(--findbar-pad) * 2.5
+      - var(--fndbr-btn-wdt) * 3
+    ) !important;
+  }
+  
+  /* put buttons to right place */
+  .findbar-closebutton,
+  .findbar-find-next,
+  .findbar-find-previous
+  {
+    position: absolute;
+    top: var(--findbar-pad);
+    margin-inline-start: 0px !important;
+    margin-inline-end: 0px !important;
+  }
+  .findbar-closebutton {
+    right: var(--findbar-pad);
+  }
+  .findbar-find-next {
+    right: calc(var(--fndbr-btn-wdt) + var(--findbar-pad) / 2 )
+  
+  
+  }
+  .findbar-find-previous {
+    right: calc(var(--fndbr-btn-wdt) * 2 + var(--findbar-pad) / 2 )
+  
+  
+  }
+  
+  /* some design */
+  background: var(--tb-col) !important;
+  transition: var(--transition) !important;
+  & > * {
+    opacity: var(--dyn-opct);
+  }
+  
+  /* corners, shadow */
+  border: var(--outline) !important;
+  outline: var(--shadow) !important;
+  border-radius: var(--big-rounding) !important;
+  
+  /* rounded buttons */
+  .findbar-textbox,
+  .findbar-closebutton,
+  .findbar-find-next,
+  .findbar-find-previous
+  {
+    border-radius: var(--rounding) !important;
+  }
+}
+findbar[hidden] {
+  margin-bottom: unset !important;
+  transition-delay: unset !important;
+  visibility: visible !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  bottom: calc(
+    0px 
+    - var(--toolbar-item-hgt) * 2
+    - var(--margin) * 2
+  ) !important;
+}
+
+/* adaptive findbar width */
+@media (max-width: 1500px) {
+  :root {
+    --findbar-wdt: calc(
+       100vw
+       - var(--left-margin)
+       - var(--right-margin)
+       - var(--margin) * 2
+     ) !important;
+  }
+}
+/* ---------- end ctrl + f ---------- */
