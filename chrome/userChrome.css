@@ -5,7 +5,6 @@
 /*@import url("ShyFox/shy-toolbar.css");*/
 /*@import url("ShyFox/shy-navbar.css");*/
 /*@import url("ShyFox/shy-controls.css");*/
-
 /* @import url("ShyFox/shy-findbar.css"); */
 /* @import url("ShyFox/shy-compact.css"); */
 /* @import url("ShyFox/shy-icons.css"); */
@@ -15,8 +14,18 @@
 #sidebar-main {
   visibility: collapse;
 }
+
 #sidebar-box {
+  margin: 4px !important;
   padding: 0 !important;
+  position: fixed !important;
+  z-index: 9999 !important;
+  top: 34px;
+  right: 0;
+  bottom: 0;
+  width: 300px;
+  height: auto;
+  background-color: transparent;
 }
 
 /* centered navbar text */
@@ -119,9 +128,13 @@ findbar {
     right: calc(var(--fndbr-btn-wdt) + var(--findbar-pad) / 2 )
   
   
+  
+  
   }
   .findbar-find-previous {
     right: calc(var(--fndbr-btn-wdt) * 2 + var(--findbar-pad) / 2 )
+  
+  
   
   
   }
