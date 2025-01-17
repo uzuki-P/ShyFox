@@ -22,3 +22,10 @@ user_pref("widget.gtk.rounded-bottom-corners.enabled", true);
 
 // Who is bogus? (fixes Sidebery tab dragging on Linux)
 user_pref("widget.gtk.ignore-bogus-leave-notify", 1);
+
+// Disable pocket
+user_pref("extensions.pocket.enabled", false);
+
+// enable new sidebar newtab
+user_pref("sidebar.revamp", true);
+user_pref("sidebar.verticalTabs", true);
