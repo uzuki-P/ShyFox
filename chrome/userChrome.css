@@ -1,11 +1,55 @@
 /* imports */
 @import url("ShyFox/shy-variables.css");
-@import url("ShyFox/shy-global.css");
-@import url("ShyFox/shy-sidebar.css");
-@import url("ShyFox/shy-toolbar.css");
-@import url("ShyFox/shy-navbar.css");
-@import url("ShyFox/shy-findbar.css");
-@import url("ShyFox/shy-controls.css");
-@import url("ShyFox/shy-compact.css");
-@import url("ShyFox/shy-icons.css");
-@import url("ShyFox/shy-floating-search.css");
+/* @import url("ShyFox/shy-global.css"); */
+/*@import url("ShyFox/shy-sidebar.css");*/
+/*@import url("ShyFox/shy-toolbar.css");*/
+/*@import url("ShyFox/shy-navbar.css");*/
+/*@import url("ShyFox/shy-controls.css");*/
+
+/* @import url("ShyFox/shy-findbar.css"); */
+/* @import url("ShyFox/shy-compact.css"); */
+/* @import url("ShyFox/shy-icons.css"); */
+/* @import url("ShyFox/shy-floating-search.css"); */
+
+/* Hide side navbar on vertical tabbar */
+#sidebar-main {
+  visibility: collapse;
+}
+
+/* centered navbar text */
+#urlbar:not(:is(
+  [breakout][breakout-extend],
+  :focus-within
+) ) {
+  #urlbar-input {text-align: center !important}
+}
+
+/* tab loading progress in urlbar background */
+#main-window:not([customizing]):not([titlepreface*="‌"]):has(.tabbrowser-tab[selected][busy]) #urlbar:not([breakout-extend]) #urlbar-background{
+  background: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--shy-color) 30%, transparent) 0 var(--shy-tab-load-pcent),
+    color-mix(in srgb, var(--bt-col) 10%, transparent) var(--shy-tab-load-pcent) 100%
+  ) !important;
+}
+
+#main-window[customizing]{
+  #nav-bar{
+    left: 140px !important;
+    right: 140px !important;
+    
+    width: calc(100vw - 280px) !important;
+    
+    top: var(--margin) !important;
+    border-radius: var(--big-rounding) !important;
+    
+    background-color: var(--bg-col) !important;
+  }
+  
+  #urlbar-background, #searchbar {background-color: var(--tb-col) !important;}
+}
+
+/* remove rounded url input */
+#urlbar-input{
+  border-radius: 0 !important;
+}
