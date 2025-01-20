@@ -14,13 +14,17 @@
 #sidebar-main {
   visibility: collapse;
 }
-
 #sidebar-box {
-  margin: 4px !important;
-  padding: 0 !important;
-  position: fixed !important;
-  z-index: 9999 !important;
+/*   position: fixed !important;
   top: 34px;
+  margin: 4px !important; */
+/*    */
+  position: relative !important;
+  top: 0px;
+  padding-left: 2px !important;
+/*    */
+  padding: 0 !important;
+  z-index: 9999 !important;
   right: 0;
   bottom: 0;
   width: 300px;
@@ -80,108 +84,49 @@
   }
 }
 
-/* ---------- ctrl + f ---------- */
-findbar {
-  --findbar-pad: 8px;
-  --fndbr-btn-wdt: 30px;
-  position: fixed !important;
-  z-index: 5 !important;
-  top: calc(var(--bottom-margin) + var(--margin));
-  left: calc(
-    (
-      100vw
-      - var(--findbar-wdt)
-      + var(--left-margin)
-      - var(--right-margin)
-    ) / 2
-  );
-  height: calc(var(--toolbar-item-hgt) * 2);
-  padding-top: var(--toolbar-item-hgt) !important;
-  width: var(--findbar-wdt);
-  
-  /* styles for input textbox */
-  .findbar-textbox {
-    position: absolute;
-    top: var(--findbar-pad);
-    left: var(--findbar-pad);
-    width: calc(
-      var(--findbar-wdt) 
-      - var(--findbar-pad) * 2.5
-      - var(--fndbr-btn-wdt) * 3
-    ) !important;
+/* ------ compact extension ------ */
+#unified-extensions-view {
+  --uei-icon-size: 24px;
+  --extensions-in-row: 4;
+  width: 100% !important;
+  :is(
+      toolbarseparator,
+      .unified-extensions-item-menu-button.subviewbutton,
+      .unified-extensions-item-action-button .unified-extensions-item-contents
+    ) {
+    display: none !important;
   }
-  
-  /* put buttons to right place */
-  .findbar-closebutton,
-  .findbar-find-next,
-  .findbar-find-previous
-  {
-    position: absolute;
-    top: var(--findbar-pad);
-    margin-inline-start: 0px !important;
-    margin-inline-end: 0px !important;
+  :is(
+      #overflowed-extensions-list,
+  #unified-extensions-area,
+  .unified-extensions-list 
+    ) {
+    display: grid !important;
+    grid-template-columns: repeat(var(--extensions-in-row),auto);
+    justify-items: center !important;
+    align-items: center !important;
   }
-  .findbar-closebutton {
-    right: var(--findbar-pad);
+  :is(
+      :is(
+        #unified-extensions-area,
+  .unified-extensions-list
+      ) .unified-extensions-item,
+  .unified-extensions-list
+    ) {
+    max-width: max-content;
   }
-  .findbar-find-next {
-    right: calc(var(--fndbr-btn-wdt) + var(--findbar-pad) / 2 )
-  
-  
-  
-  
+  #unified-extensions-area {
+    margin-bottom: 5px !important;
+    border-top: 1px solid var(--panel-separator-color);
+    border-bottom: 1px solid var(--panel-separator-color);
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
   }
-  .findbar-find-previous {
-    right: calc(var(--fndbr-btn-wdt) * 2 + var(--findbar-pad) / 2 )
-  
-  
-  
-  
+  .unified-extensions-item[attention] > .unified-extensions-item-action-button.subviewbutton {
+    background-position: left calc(var(--uei-dot-horizontal-position-in-panel) - 4px) bottom var(--uei-dot-vertical-position-in-panel) !important;
   }
-  
-  /* some design */
-  background: var(--tb-col) !important;
-  transition: var(--transition) !important;
-  & > * {
-    opacity: var(--dyn-opct);
-  }
-  
-  /* corners, shadow */
-  border: var(--outline) !important;
-  outline: var(--shadow) !important;
-  border-radius: var(--big-rounding) !important;
-  
-  /* rounded buttons */
-  .findbar-textbox,
-  .findbar-closebutton,
-  .findbar-find-next,
-  .findbar-find-previous
-  {
-    border-radius: var(--rounding) !important;
+  .unified-extensions-item-action-button {
+    padding-right: 3px !important;
   }
 }
-findbar[hidden] {
-  margin-bottom: unset !important;
-  transition-delay: unset !important;
-  visibility: visible !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-  bottom: calc(
-    0px 
-    - var(--toolbar-item-hgt) * 2
-    - var(--margin) * 2
-  ) !important;
-}
-
-/* adaptive findbar width */
-@media (max-width: 1500px) {
-  :root {
-    --findbar-wdt: calc(
-       100vw
-       - var(--left-margin)
-       - var(--right-margin)
-       - var(--margin) * 2
-     ) !important;
-  }
-}
-/* ---------- end ctrl + f ---------- */
+/* ------ end compact extension ------ */
