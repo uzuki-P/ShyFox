@@ -125,7 +125,8 @@ Reserved values and all sorts of dynamic variables. You should not touch them.
   --arrowpanel-border-radius: var(--big-rounding) !important;
   --panel-border-radius:      var(--big-rounding) !important;
   
-  --arrowpanel-menuitem-border-radius: var(--rounding) !important;
+/*   --arrowpanel-menuitem-border-radius: var(--rounding) !important; */
+  --arrowpanel-menuitem-border-radius: 4px !important;
   --toolbarbutton-border-radius:       var(--rounding) !important;
   --button-border-radius:              var(--rounding) !important;
   --border-radius-small:               var(--rounding) !important;
